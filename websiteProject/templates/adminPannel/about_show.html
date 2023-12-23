@@ -1,0 +1,129 @@
+{% extends 'adminPannel/adminBase.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h1>Hello, <span>Welcome Here</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+                <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Table-Row-Select</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+            </div>
+            <!-- /# row -->
+            <section id="main-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>About All Data </h4>
+
+                            </div>
+                            <div class="bootstrap-data-table-panel">
+                                <div class="table-responsive">
+                                    <table id="row-select" class="display table table-borderd table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Add Description</th>
+                                                <th>Image</th>
+                                                <th>Action</th>
+                                                <th>Status</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+
+
+                                            <!-- {% for i in show_about %}
+                                            <tr>
+                                                <th scope="row">{{i.id}}</th>
+                                                <td>{{i.about_title}}</td>
+                                                <td>{{i.about_description_1}}</td>
+                                                <td>{{i.about_description_2}}</td>
+                                                <td><img src="/media/{{i.about_pic}}" alt="" style="width: 100px; height: 100px;"> </td> -->
+                                                <!-- <td><a href="{% url 'about_edit' i.id %}">Edit</a> </td> -->
+                                                <!-- <td>{% if i.status == 0 %}
+                                                    Pending
+                                                    {% else %}
+                                                    Done
+
+                                                    {% endif %}</td> -->
+
+
+                                                <!-- <td><a href="{% url 'about_edit' i.id %}">Edit</a> || <a href="{% url 'delete_product' i.id %}">Delete</a> || <a href="{% url 'task_done' i.id %}">Task Complete</a> || <a href="{% url 'task_incomplete' i.id %}">Incomplete</a> </td>
+                                                <td><a href="">Active</a></td>
+                                            </tr> -->
+                                            <!-- {% endfor %} -->
+
+                                             
+                                        {% for i in about_show %}
+                                                
+                                            
+                                                
+                                            <tr> 
+                                                <td>{{i.about_title}}</td>
+                                                <td>{{i.about_description_1}}</td>
+                                                <td>{{i.about_description_2}}</td>
+                                              
+                                             <td><img src="/media/{{i.about_pic}}" alt="" style="width: 100px; height: 100px;"> </td>
+                                                <td><a href="{% url 'about_edit' i.id %}">Edit</a> | <a href="{% url 'delete_about' i.id %}">Delete </a> </td>
+                                                {% if i.is_active == True %}
+                                                <td><a href="{% url 'about_inactive' i.id %}" class="btn btn-danger">Inactive</a></td>
+                                                
+                                                {% else %}
+                                            
+                                                <td><a href="{% url 'about_status' i.id %}" class="btn btn-success">Active</a></td>
+                                            
+                                                {% endif %}
+
+                                                
+                                                
+                                            </tr>
+                                            {% endfor %}
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer">
+                            <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

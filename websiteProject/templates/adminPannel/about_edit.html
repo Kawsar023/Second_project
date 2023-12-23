@@ -1,0 +1,43 @@
+{% extends 'adminPannel/adminBase.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="row content-wrap" >
+    <div class="col-lg-12">
+        <div class="card">
+
+<div class="container"  style="margin-top: 30px; border: 1px solid black; padding: 30px;">
+    
+    {% for i in about_edit %}
+    
+    <form method="POST" action="{% url 'about_update' i.id %}" enctype="multipart/form-data">
+       {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">About Title</label>
+            <input type="text" class="form-control" value="{{i.about_title}}" name="about_title" required>
+            <div id="emailHelp" class="form-text"></div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">About Description</label>
+            <input type="text" class="form-control" value="{{i.about_description_1}}" name="about_description_1" required>
+            <div id="emailHelp" class="form-text"></div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">add Description</label>
+                <input type="text" class="form-control" value="{{i.about_description_2}}" name="about_description_2" required>
+                <div id="emailHelp" class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" value="{{i.about_pic}}" name="about_pic" required>
+                <div id="emailHelp" class="form-text"></div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock %}

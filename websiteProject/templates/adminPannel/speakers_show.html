@@ -1,0 +1,115 @@
+{% extends 'adminPannel/adminBase.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 p-r-0 title-margin-right">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h1>Hello, <span>Welcome Here</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+                <div class="col-lg-4 p-l-0 title-margin-left">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Table-Row-Select</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# column -->
+            </div>
+            <!-- /# row -->
+            <section id="main-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>Speaker All Data </h4>
+
+                            </div>
+                            <div class="bootstrap-data-table-panel">
+                                <div class="table-responsive">
+                                    <table id="row-select" class="display table table-borderd table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>Designation</th>
+                                                <th>Facebook Url</th>
+                                                <th>Twitter Url</th>
+                                                <th>Linkedin Url</th>
+                                                <th>Pinterest Url</th>
+                                                <th>Image</th>
+                                                <th>Action</th>
+                                                <th>Status</th>
+
+                                            </tr>
+                                        </thead>
+
+
+                                             
+                                             
+                                    {% for i in speakers_show %}
+                                                
+                                            
+                                                
+                                           <tr> 
+                                                <td>{{i.speaker_name}}</td>
+                                                <td>{{i.speaker_description_1}}</td>
+                                                <td>{{i.designations.designations_title}}</td>
+                                                <td>{{i.facebook}}</td>
+                                                <td>{{i.twitter}}</td>
+                                                <td>{{i.linkedin}}</td>
+                                                <td>{{i.pinterest}}</td>
+                                              
+                                             <td><img src="/media/{{i.speaker_pic}}" alt="" style="width: 100px; height: 100px;"> </td>
+                                                <td><a href="{% url 'speakers_edit' i.id %}">Edit</a> | <a href="{% url 'delete_speakers' i.id %}">Delete </a> </td>
+                                                {% if i.is_active == True %}
+                                                <td><a href="{% url 'speakers_inactive' i.id %}" class="btn btn-danger">Inactive</a></td>
+                                                
+                                                {% else %}
+                                            
+                                                <td><a href="{% url 'speakers_status' i.id %}" class="btn btn-success">Active</a></td>
+                                            
+                                                {% endif %}
+
+                                                
+                                                
+                                            </tr>
+                                            {% endfor %} 
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer">
+                            <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
